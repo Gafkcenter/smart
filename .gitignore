@@ -19,3 +19,9 @@
 /bin/*
 /bin/
 /target/
+smart4j*/bin/*
+smart4j*/bin/
+smart4j*/target/
+smart4j*/src/main/webapp/WEB-INF/classes/*
+smart4j*/.settings/
+smart4j*/.classpath
