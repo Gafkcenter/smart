@@ -1,0 +1,49 @@
+2.1需求分析
+2系统设计（只写设计文档，为后续开发者提供帮助，不涉及代码。）
+需求分析---》用例，表设计，画原型图，定义URL规范即止
+2.1.1	用例设计（最好用UML图）
+	-查询客户
+	-显示客户列表
+	-显示客户基本信息
+	-创建客户
+	-编辑客户
+	-删除客户
+2.1.2	表设计
+	-表名，字段名均小写，多字母使用下划线分隔
+	-每张表都有唯一的主键字段，且字段名都为id,可使用自增主键
+	-数据类型尽可能统一，不要出现太多的数据类型
+2.1.3	设计界面原型
+	-快速设计HTML原型可使用Balsamiq Mockups软件
+2.1.4	设计URL
+	-restful_Document.txt
+2.1.5	其它：数据模型，业务流。
+2.2	开发WEB应用
+	开发由粗到细,先搭个框架（TODO）
+	-创建数据库
+	-准备开发环境
+	-编写模型
+	-编写控制层
+	-编写服务层
+	-编写单元测试
+	-编写视图
+2.3 细节完善与代码优化
+	-完善服务层
+		加SLF4J依赖用于Log4J作实现 提供log4j.properties
+		加MySQL依赖用于提供JDBC实现 提供jdbc.properties
+			-重构数Service据库连接操作 提供DatabaseHelper
+			-重构利用Apache Dbutils 重构DatabaseHelper
+			-重构DatabaseHelper将 connection 放入ThreadLocal(隐藏获取和关闭连接)
+			-重构DatabaseHelper将频繁开启关闭的数据库连接池化
+		加两个Apache Commons依赖 用于提供常用工具类（lang3和collections4）
+		加Apache Dbutils依赖 :结果集Handler ResultSetHandler的实现.
+								BeanHandler return Bean
+								BeanListHandler return List
+								BeanMapHandler return Map
+								ArrayHandler return Object[]
+								ArrayListHandler return List
+								MapHandler return Map
+								MapListHandler return List
+								ScalarHandler	return 某列的值
+								ColumnListHandler return 某列值的列表
+								KeyedHandler return Map>对象,需要指定列名
+		加Apache dbcp2连接池依赖
